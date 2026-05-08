@@ -7,10 +7,11 @@ and capture the auto-suggestion options in the search box
 test("auto-suggest dropdown", async ({ page }) => {
   await page.goto("https://www.amazon.in/");
   await page.waitForTimeout(2_000);
-  const continueButton: Locator = page.locator("button[alt='Continue shopping']");
 
   // bypassing a continue button that sometimes appear on amazon when automation scripts run
-  if (continueButton) {
+  const continueButton: Locator = page.locator("button[alt='Continue shopping']");
+
+  if (await continueButton.isVisible()) {
     await continueButton.click();
   }
   await page.locator("input[role='searchbox']").pressSequentially("apple", { delay: 500 });

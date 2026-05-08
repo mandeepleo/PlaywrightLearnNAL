@@ -20,13 +20,13 @@ export default defineConfig({
 
   /* TIMEOUTS */
 
-  // Test timeout (default is 30_000 ms)
+  /* Test timeout (default is 30_000 ms) */
   // timeout: 120_000,
-  // Expect timeout (default is 5 seconds)
+  /* Expect timeout (default is 5 seconds) */
   // expect: {
   //   timeout: 10_000,
   // },
-  // Global timeout: timeout for the whole test run; There's no default globalTimeout
+  /* Global timeout: timeout for the whole test run; There's no default globalTimeout */
   //  globalTimeout: 3_600_000,
 
   /* Fail the build on CI if you accidentally left test.only in the source code. */
