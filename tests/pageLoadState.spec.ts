@@ -1,0 +1,13 @@
+import { test, expect } from "@playwright/test";
+
+test("page load state test", async ({ page }) => {
+  // Loading States (waitUntil) Options:
+  // 'domcontentloaded' - consider operation to be finished when the DOMContentLoaded event is fired.
+  // 'load' - consider operation to be finished when the load event is fired. Default option.
+  // 'networkidle' - DISCOURAGED consider operation to be finished when there are no network connections for at least 500 ms. Don't use this method for testing, rely on web assertions to assess readiness instead.
+  // 'commit' - consider operation to be finished when network response is received and the document started loading.
+
+  await page.goto("https://www.saucedemo.com/", { waitUntil: "load" }); // though load is default option and not required to be mentioned
+  await expect(page.getByRole("button", { name: "Login" })).toBeVisible();
+  console.log("On saucedemo.com LOGIN page");
+});
