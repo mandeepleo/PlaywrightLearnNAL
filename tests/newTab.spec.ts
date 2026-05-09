@@ -10,9 +10,5 @@ test("New Tab Test", async ({ context }) => {
   await page.getByRole("button", { name: "New Tab" }).click(); // generated page event
   const newTab: Page = await newPagePromise; // initialize newTab variable with the page object of the newly opened tab
   await expect(newTab).toHaveURL("https://demoqa.com/sample");
-  const newPageHeading = newTab.getByRole("heading", {
-    name: "This is a sample page",
-  });
-  await page.waitForTimeout(1_000);
-  await expect(newPageHeading).toBeVisible();
+  await expect(newTab.getByRole("heading", { name: "This is a sample page" })).toBeVisible();
 });
