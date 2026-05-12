@@ -21,7 +21,7 @@ export default defineConfig({
   /* TIMEOUTS */
 
   /* Test timeout (default is 30_000 ms) */
-  // timeout: 120_000,
+  timeout: 60_000,
   /* Expect timeout (default is 5 seconds) */
   // expect: {
   //   timeout: 10_000,
