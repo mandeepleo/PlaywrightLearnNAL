@@ -2,11 +2,11 @@
   {
     "email": "laura.taylor@example.com",
     "password": "test123",
-    "validity   ": "valid"
+    "validity": "valid"
   },
   {
     "email": "invaliduser@example.com",
     "password": "wrongpassword",
-    "validity   ": "invalid"
+    "validity": "invalid"
   }
 ]

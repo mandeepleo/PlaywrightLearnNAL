@@ -9,7 +9,7 @@ test("ALERT dialog test", async ({ page }) => {
   await expect(page).toHaveTitle("demosite");
   page.on("dialog", (dialog) => {
     console.log("Dialog type is: ", dialog.type());
-    expect(dialog.type()).toContain("alert"); // Asserting alert dialog type
+    expect(dialog.type() === "alert"); // Asserting alert dialog type
     console.log("Dialog messgae is: ", dialog.message());
     expect(dialog.message()).toContain("You clicked a button"); // Asserting alert dialog message
     dialog.accept();
@@ -23,7 +23,7 @@ test("CONFIRM dialog test", async ({ page }) => {
 
   page.on("dialog", (dialog) => {
     console.log("Dialog type is: ", dialog.type());
-    expect(dialog.type()).toContain("confirm"); // Asserting confirm dialog type
+    expect(dialog.type() === "confirm"); // Asserting confirm dialog type
     console.log("Dialog message is: ", dialog.message());
     expect(dialog.message()).toContain("Do you confirm action?"); // Asserting confirm dialog message
     dialog.accept(); // clicking OK on confirm alert
@@ -45,11 +45,9 @@ test("PROMPT dialog test", async ({ page }) => {
   await expect(page).toHaveTitle("demosite");
   page.on("dialog", (dialog) => {
     console.log("Dialog type is:", dialog.type());
-    expect(dialog.type()).toContain("prompt"); // Asserting prompt dialog type
-
+    expect(dialog.type() === "prompt"); // Asserting prompt dialog type
     console.log("Dialog message is: ", dialog.message());
     expect(dialog.message()).toContain("Please enter your name"); // Asserting prompt dialog message
-
     console.log("Default value in the textbox on prompt alert is: ", dialog.defaultValue());
     dialog.accept("Mandeep Singh"); // Entering data and accepting prompt dialog
   });
