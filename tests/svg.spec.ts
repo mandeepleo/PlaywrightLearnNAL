@@ -13,7 +13,7 @@ test("svg graph element test", async ({ page }) => {
     const centerX = box!.x + box!.width / 2;
     const centerY = box!.y + box!.height / 2;
     await page.mouse.move(centerX, centerY);  // hovering mouse to the center of the element
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(100);
     const state = await region.getAttribute("id");
     console.log("State name: ", state);
   }
