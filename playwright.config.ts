@@ -18,14 +18,16 @@ export default defineConfig({
   /* Run tests in files in parallel */
   fullyParallel: true,
 
-  /* TIMEOUTS */
+  ///////*** TIMEOUTS ***/////////
 
   /* Test timeout (default is 30_000 ms) */
-  timeout: 60_000,
+  //timeout: 60_000,
+
   /* Expect timeout (default is 5 seconds) */
   // expect: {
-  //   timeout: 10_000,
+  //   timeout: 7_000,
   // },
+
   /* Global timeout: timeout for the whole test run; There's no default globalTimeout */
   //  globalTimeout: 3_600_000,
 
