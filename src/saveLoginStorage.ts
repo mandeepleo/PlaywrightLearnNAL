@@ -1,3 +1,5 @@
+// this storage state is utilized in the tests/orangeHrmDashboard.spec.ts file tests
+
 import { Browser, chromium, expect, Page } from "@playwright/test";
 
 // this IIFE is used to save the login session of the user by generating
@@ -13,10 +15,7 @@ import { Browser, chromium, expect, Page } from "@playwright/test";
   });
 
   const page: Page = await browser.newPage();
-  await page.goto(
-    "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
-    { timeout: 30_000 },
-  );
+  await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login", { timeout: 30_000 });
   await page.getByRole("textbox", { name: "Username" }).fill("Admin");
   await page.getByRole("textbox", { name: "Password" }).fill("admin123");
   await page.getByRole("button", { name: "Login" }).click();
@@ -24,6 +23,7 @@ import { Browser, chromium, expect, Page } from "@playwright/test";
     timeout: 10000,
   });
   // saving the storage state to the file named storageState.json
+  // this storage state is utilized in the tests/orangeHrmDashboard.spec.ts file tests
   await page.context().storageState({ path: "storageState.json" });
   await browser.close();
 })();

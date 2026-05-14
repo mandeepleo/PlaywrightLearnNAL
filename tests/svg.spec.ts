@@ -10,10 +10,10 @@ test("svg graph element test", async ({ page }) => {
 
   for (let region of allRegions) {
     // await region.hover();
-    const box = await region.boundingBox();
-    const centerX = box!.x + box!.width / 2;
-    const centerY = box!.y + box!.height / 2;
-    await page.mouse.move(centerX, centerY);  // hovering mouse to the center of the element
+    const box = await region.boundingBox(); // creating a virtual box around region using boundingBox() method
+    const centerX = box!.x + box!.width / 2; // calculating x-axis center (centerX) of box
+    const centerY = box!.y + box!.height / 2; // calculating y-axis center (centerY) of box
+    await page.mouse.move(centerX, centerY); // hovering mouse to the center of the region (centerX, centerY)
     await page.waitForTimeout(100);
     const state = await region.getAttribute("id");
     console.log("State name: ", state);
