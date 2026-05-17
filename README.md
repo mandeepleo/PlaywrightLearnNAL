@@ -1,5 +1,9 @@
-## This is a learning project
+# A NaveenAutomationLabs Learning Project
 
-### Playwright with TypeScript
+### Using Playwright with TypeScript to learn how to automate web testing.
 
-setTimeout (()=>{debugger;},5000)
+- Browser console command to pause execution after 5 seconds:
+
+```javascript
+setTimeout(() => {debugger;}, 5000);
+```
