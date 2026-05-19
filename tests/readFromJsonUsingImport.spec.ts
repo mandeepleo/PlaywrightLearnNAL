@@ -7,7 +7,7 @@ console.log(typeof loginData); // object
 test.describe("Login data driven test", () => {
     for (const data of loginData) {
         const { username, password, validity } = data; // destructuring assignment - extract username, password and validity from data object
-        test.only(`Login test for ${username} and ${password}`, async ({ page }) => {
+        test(`Login test for ${username} and ${password}`, async ({ page }) => {
             await page.goto("https://www.saucedemo.com/");
             // Fill login form
             await page.getByRole("textbox", { name: "Username" }).fill(username);
