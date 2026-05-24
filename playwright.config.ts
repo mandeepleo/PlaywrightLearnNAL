@@ -51,12 +51,14 @@ export default defineConfig({
         /* Base URL to use in actions like `await page.goto('')`. */
         // baseURL: 'http://localhost:3000',
 
+        //** TIMEOUTS */
+
         // actionTimeout:10_000, // maximum time for each action (like click, fill, etc.) to complete before timing out
         // navigationTimeout: 20_000, // maximum time for page navigation to complete before timing out
 
         //Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer
         trace: "off", // generates trace.zip in the test-results folder and can be opened through report
-        headless: true,
+        headless: false,
         screenshot: "off",
         video: "off",
         // "data-testid" attribute can be used by default in the getByTestId() method
