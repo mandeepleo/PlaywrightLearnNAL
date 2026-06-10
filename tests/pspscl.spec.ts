@@ -5,8 +5,10 @@ test("PSPCL | Display and Download Latest Bill Test", async ({ page }) => {
     await page.goto("https://consumer.pspcl.in/wss/auth/login", { waitUntil: "load" });
     await expect(page.getByRole("heading", { name: "Login To My Account" })).toBeVisible();
     // login with valid credentials
-    await page.getByPlaceholder("Enter Account Number").fill("6556821000");
+    await page.getByPlaceholder("Enter Account Number").fill("6556821000"); // Gulmohar Temp A/C
     await page.getByPlaceholder("Enter Password").fill("#GulMohar007");
+    // await page.getByPlaceholder("Enter Account Number").fill("0498091000"); // JCT A/C
+    // await page.getByPlaceholder("Enter Password").fill("#Command512");
     await page.getByRole("button", { name: "Sign In" }).click();
     expect(page.getByRole("heading", { name: "Dashboard" })).toBeVisible();
     // click on view bill link
@@ -32,7 +34,7 @@ test("PSPCL | Display and Download Latest Bill Test", async ({ page }) => {
 
     const filePath = `./downloads/${download.suggestedFilename()}`;
     download.saveAs(filePath);
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(3_000);
     console.log("Latest bill PDF is downloaded/saved at: ", filePath);
 
     expect(fs.existsSync(filePath)).toBeTruthy();
