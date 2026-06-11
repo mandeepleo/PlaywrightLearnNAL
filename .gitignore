@@ -10,3 +10,5 @@ node_modules/
 /downloads/
 /allure-results/
 /allure-report/
+/tests/vi
+tests/visualTesting.spec.ts-snapshots/
