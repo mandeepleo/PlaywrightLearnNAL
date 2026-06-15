@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, Dialog } from "@playwright/test";
 
 /*
  -> By default, dialogs are auto-dismissed by Playwright
@@ -8,7 +8,7 @@ import { test, expect } from "@playwright/test";
 test("ALERT dialog test", async ({ page }) => {
   await page.goto("https://demoqa.com/alerts");
   await expect(page).toHaveTitle("demosite");
-  page.once("dialog", async (dialog) => {
+  page.once("dialog", async (dialog: Dialog) => {
     console.log("Dialog type is: ", dialog.type());
     expect(dialog.type()).toBe("alert");
     console.log("Dialog messgae is: ", dialog.message());
@@ -23,7 +23,7 @@ test("CONFIRM dialog test", async ({ page }) => {
   await page.goto("https://demoqa.com/alerts");
   await expect(page).toHaveTitle("demosite");
 
-  page.on("dialog", (dialog) => {
+  page.on("dialog", (dialog: Dialog) => {
     console.log("Dialog type is: ", dialog.type());
     expect(dialog.type()).toBe("confirm"); // Asserting confirm dialog type
     console.log("Dialog message is: ", dialog.message());
@@ -45,7 +45,7 @@ test("CONFIRM dialog test", async ({ page }) => {
 test("PROMPT dialog test", async ({ page }) => {
   await page.goto("https://demoqa.com/alerts");
   await expect(page).toHaveTitle("demosite");
-  page.on("dialog", (dialog) => {
+  page.on("dialog", (dialog: Dialog) => {
     console.log("Dialog type is:", dialog.type());
     expect(dialog.type()).toBe("prompt"); // Asserting prompt dialog type
     console.log("Dialog message is: ", dialog.message());
