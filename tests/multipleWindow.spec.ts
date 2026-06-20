@@ -13,7 +13,7 @@ test("two window handle test", async ({ context }) => {
 
   console.log("Total no. of pages: ", context.pages().length);
 
-  // await childWindowPage.bringToFront(); // (optional step) setting focus on new page/tab
+  // await childWindowPage.bringToFront(); // (optional step) switching to new page/tab
   console.log("Child window title is: ", await childWindowPage.title());
   expect(await childWindowPage.title()).toContain("Get to Know Us");
   // await childWindowPage.close(); // closing child window

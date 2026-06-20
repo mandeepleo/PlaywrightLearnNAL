@@ -6,6 +6,7 @@ import { test, expect, Dialog } from "@playwright/test";
 */
 
 test("ALERT dialog test", async ({ page }) => {
+  test.setTimeout(90_000); // demoqa.com sometimes takes longer to open
   await page.goto("https://demoqa.com/alerts");
   await expect(page).toHaveTitle("demosite");
   page.once("dialog", async (dialog: Dialog) => {
@@ -16,10 +17,10 @@ test("ALERT dialog test", async ({ page }) => {
     await dialog.accept();
   });
   await page.locator("#alertButton").click();
-  await page.locator("#alertButton").click();
 });
 
 test("CONFIRM dialog test", async ({ page }) => {
+  test.setTimeout(90_000); // demoqa.com sometimes takes longer to open
   await page.goto("https://demoqa.com/alerts");
   await expect(page).toHaveTitle("demosite");
 
@@ -43,6 +44,7 @@ test("CONFIRM dialog test", async ({ page }) => {
 });
 
 test("PROMPT dialog test", async ({ page }) => {
+  test.setTimeout(90_000); // demoqa.com sometimes takes longer to open
   await page.goto("https://demoqa.com/alerts");
   await expect(page).toHaveTitle("demosite");
   page.on("dialog", (dialog: Dialog) => {
