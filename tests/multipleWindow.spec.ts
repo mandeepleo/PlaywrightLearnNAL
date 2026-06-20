@@ -9,20 +9,20 @@ test("two window handle test", async ({ context }) => {
     context.waitForEvent("page"),
     await page.getByRole("link", { name: "About Us" }).click(),
   ]);
-  await childWindowPage.waitForLoadState();
+  // await childWindowPage.waitForLoadState();
 
   console.log("Total no. of pages: ", context.pages().length);
 
-  await childWindowPage.bringToFront(); // (optional step) setting focus on new page/tab
+  // await childWindowPage.bringToFront(); // (optional step) setting focus on new page/tab
   console.log("Child window title is: ", await childWindowPage.title());
   expect(await childWindowPage.title()).toContain("Get to Know Us");
-  await childWindowPage.close(); // closing child window
+  // await childWindowPage.close(); // closing child window
 
-  await page.bringToFront(); // (optional step) setting focus back to 1st parent window
+  // await page.bringToFront(); // (optional step) setting focus back to 1st parent window
   console.log("Parent window title: ", await page.title());
-  await page.close(); // closing parent window
+  // await page.close(); // closing parent window
 
-  await page.pause();
+  // await page.pause();
 });
 
 test("multiple window handle test", async ({ context }) => {
