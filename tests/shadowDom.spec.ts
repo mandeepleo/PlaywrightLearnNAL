@@ -13,5 +13,4 @@ test("Open Shadow DOM element Test", async ({ page }) => {
   await page.locator("#submit-btn").click();
   await expect(page.locator("#form-result")).toHaveText(/Submitted/);
 
-  await page.pause();
 });

@@ -9,7 +9,7 @@ test("ALERT dialog test", async ({ page }) => {
   test.setTimeout(90_000); // demoqa.com sometimes takes longer to open
   await page.goto("https://demoqa.com/alerts");
   await expect(page).toHaveTitle("demosite");
-  page.once("dialog", async (dialog: Dialog) => {
+  page.on("dialog", async (dialog: Dialog) => {
     console.log("Dialog type is: ", dialog.type());
     expect(dialog.type()).toBe("alert");
     console.log("Dialog messgae is: ", dialog.message());

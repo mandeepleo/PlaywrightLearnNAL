@@ -33,8 +33,8 @@ test("PSPCL | Display and Download Latest Bill Test", async ({ page }) => {
     const download = await downloadPromise;
 
     const filePath = `./downloads/${download.suggestedFilename()}`;
-    download.saveAs(filePath);
-    await page.waitForTimeout(3_000);
+    await download.saveAs(filePath);
+    // await page.waitForTimeout(3_000);
     console.log("Latest bill PDF is downloaded/saved at: ", filePath);
 
     expect(fs.existsSync(filePath)).toBeTruthy();

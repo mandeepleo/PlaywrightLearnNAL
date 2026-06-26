@@ -5,7 +5,6 @@ test("single file upload test", async ({ page }) => {
   expect(await page.title()).toBe("File Upload Playground");
 
   await page.locator("#single-file").setInputFiles("README.md"); // provide file path in setInputFiles() method
-  await page.pause();
 });
 
 test("multiple file upload and reset test", async ({ page }) => {
@@ -20,7 +19,6 @@ test("multiple file upload and reset test", async ({ page }) => {
   // reset upload files
   await page.locator("#multi-file").setInputFiles([]); // pass blank array for reset
 
-  await page.pause();
 });
 
 test("file upload and reset without input html tag", async ({ page }) => {
