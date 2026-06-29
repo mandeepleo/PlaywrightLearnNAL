@@ -14,7 +14,7 @@ test("file download test", async ({ page }) => {
   expect(await downloadPromise.failure()).toBeNull();
 
   console.log("Downloaded file-name: ", downloadPromise.suggestedFilename()); // prinitng filename of the downloaded file
-  console.log("Download file path: ", await downloadPromise.path()); // print default download path
+  // console.log("Download file path: ", await downloadPromise.path()); // print default download path
   // the default download's file name is a random GUID
   // use download.suggestedFilename() to get suggested file name.
   console.log("Downloaded url: ", downloadPromise.url()); // print file downloaded url
