@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { json } from "node:stream/consumers";
 
 /** This test intercepts every network request made by the page and logs it */
 test("@intercept", async ({ page }) => {
@@ -19,7 +18,7 @@ test("@mock", async ({ page }) => {
   ];
 
   await page.route("**/products.php", (route) => {
-    // "**/products" means navigating base URL can be anything but the endpoint must be products.php
+    // "**/products.php" means navigating base URL can be anything but the endpoint must be products.php
     route.fulfill({
       status: 200,
       contentType: "application/json",
@@ -33,4 +32,3 @@ test("@mock", async ({ page }) => {
   await expect(page.getByText("Macbook Air")).toBeVisible();
   await expect(page.getByText("iPhone 17")).toBeVisible();
 });
-
