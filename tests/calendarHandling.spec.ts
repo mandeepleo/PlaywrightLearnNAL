@@ -10,12 +10,11 @@ test("calendar handling test", async ({ page }) => {
   let currentYear = await page.locator("span.ui-datepicker-year").textContent();
   let currentCalendarDate = `${currentMonth?.trim()} ${currentYear?.trim()}`;
   console.log("Current Calendar: ", currentCalendarDate);
-  const expectedCalendarDate = "August 2026";
+  const expectedCalendarDate = "August 2026"; // assign expected date (month & year) here
 
+  // Selecting date: 15, August 2026
   while (true) {
-
     if (currentCalendarDate === expectedCalendarDate) {
-      // select date 21st
       await page.getByText("15", { exact: true }).click();
       break;
     } else {
@@ -28,6 +27,6 @@ test("calendar handling test", async ({ page }) => {
     currentCalendarDate = `${currentMonth?.trim()} ${currentYear?.trim()}`;
     console.log("Current displayed Calendar: ", currentCalendarDate);
   }
-  
+
   await page.pause();
 });

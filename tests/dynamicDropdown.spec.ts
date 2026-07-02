@@ -8,19 +8,30 @@ test("auto-suggest dropdown", async ({ page }) => {
   await page.goto("https://www.amazon.in/");
   await page.waitForTimeout(2_000);
 
-  // bypassing a continue button that sometimes appear on amazon when automation scripts run
   const continueButton: Locator = page.locator("button[alt='Continue shopping']");
+  const searchBox: Locator = page.locator("input[role='searchbox']");
 
+  // Verifying either continueButton OR searchBox is visible on screen (using or() method)
+  expect(continueButton.or(searchBox)).toBeVisible();
+
+  // clicking on continue button that sometimes appear on amazon when automation scripts run
   if (await continueButton.isVisible()) {
     await continueButton.click();
   }
-  await page.locator("input[role='searchbox']").pressSequentially("apple", { delay: 500 });
+
+  // proceeding with the search
+  await searchBox.pressSequentially("apple", { delay: 500 });
   const searchSuggestions: Locator[] = await page.locator("div[class='left-pane-results-container']>div").all();
   const count: number = searchSuggestions.length;
   console.log("Number of suggested options is: ", count);
   // Printing all search suggestions
   for (let e of searchSuggestions) {
-    console.log(await e.textContent());
+    console.log(await e.innerText());
+    /**
+     * innerText returns only the visible text rendered on the screen (mimicking what a user sees and copies),
+     *  while textContent returns the raw text of all elements, including hidden text,
+     *  <script> tags, and <style> tags.
+     */
   }
 });
 
